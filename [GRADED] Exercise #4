@@ -1,1 +1,51 @@
+#include <stdio.h>
 
+/* Create a C Program following these specifications:
+1. Ask the user to input the initial budget and initial amount.
+2. If the amount is less than the budget, the program will ask the user to if want to add an amount.
+3. If yes, ask the amount.
+4. If no, exit the program.
+5. The inputted amount will add to the value of the initial amount.
+6. The program will check the amount and budget.
+7. Repeat 2nd item.
+8. If the amount is greater than or equal to the initial budget, display "Overbudget". */
+
+int main()
+{
+    float fAmount;
+    float fBudget;
+    float fAddAmount;
+    int nAsk;
+    
+    //Ask the user for the Initial Budget and Initial Amount.
+    printf("Enter Initial Budget: ");
+    scanf("%f", &fBudget);
+    printf("Enter Initial Amount: ");
+    scanf("%f", &fAmount);
+    
+    //While loop will check if Initial Amount is less than the Initial Budget. If true, it will ask the user if they want to add amount and it will keep asking them as long as the amount is less than the budget. If the new amount is greater than the budget, it will display "Overbduget" and the program will end. However if loop is false, display "Overbudget" immediately.
+    while(fAmount < fBudget)
+    {
+        
+        printf("\nAmount: %.02f is less than Budget: %.02f\n", fAmount, fBudget);
+        printf("\n1 - yes\n0 - no\nDo you want to add an amount?: ");
+        scanf("%d", &nAsk);
+        
+        //if yes(user want to add amount), user will enter an amount. The entered amount will add to the initial amount and will check if the computed new amount is less than the budget. If no(user do not want to add amount), the program will end.
+        if(nAsk)
+        {
+            printf("\nEnter Amount: ");
+            scanf("%f", &fAddAmount);
+            
+            fAmount += fAddAmount;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    printf("\nOverbudget\n");
+    
+    return 0;
+}
